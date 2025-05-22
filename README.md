@@ -2,9 +2,7 @@
 <h1 align="center">Minimal Debian</h1>
 <br>
 
-Welcome to a minimalist Debian 12 setup — a streamlined, non-graphical (partly) environment built from the ground up to embrace the modern Wayland protocol. 
-
-This project is designed for users who value simplicity, efficiency, and full control over their system.
+Welcome to a minimalist Debian 12 setup — a streamlined, non-graphical (partly) environment built from the ground up to embrace the modern Wayland protocol. This project is designed for users who value simplicity, efficiency, performance and (optionally) privacy and security for their systems.
 
 ## TO-DO
 
@@ -22,21 +20,16 @@ This project is designed for users who value simplicity, efficiency, and full co
 - [ ] Configure Waybar
     - [ ] Network
 
-
 ## System
 
 - Sound Support (PipeWire) + Minimal GUI (Pavucontrol)
 - Minimal Clipboard Manager (wl-clipboard)
-- Flatpak Support
-- Nala (for apt)
 - File Manager
 - Application Launcher
 
-
 ```xdg-portal-gtk xdg-user-dirs```
 
-
-## 🛠️ Getting Started
+## Getting Started
 
 This repository provides detailed instructions and scripts to set up your own minimal Debian 12 system following these principles.
 
@@ -44,19 +37,40 @@ This repository provides detailed instructions and scripts to set up your own mi
 
 - [Sway](https://swaywm.org/) is a dynamic tiling window manager and Wayland compositor that offers a fast, keyboard-driven workflow; with a focus on simplicity, Sway is lightweight and resource-efficient.
 
-- [Waybar] Highly customizable Wayland bar for Sway and Wlroots based compositors
+- [Waybar](), a highly customizable Wayland bar for Sway and Wlroots based compositors.
 
-## Brightness Control
+- [Flatpak]() + [Ungoogled Chromium]()
 
-## File Manager
+## Applications
 
-Thunar?
+- Application Launcher
+- Compositor + Window Manager
+- Notifications Deamon
+- Terminal Emulator
+  - Shell
+- File Manager
+- Firewall
+- Flatpak + Browser
+
+## Firewall
+
+- [GuFW](https://github.com/costales/gufw)
+- [OpenSwitch](https://github.com/evilsocket/opensnitch)
+
+## AntiVirus
+
+- [ClamAV](https://www.clamav.net/)
+
+## File Manager (GUI)
+
+- [Thunar]()
+- [Nemo](https://github.com/linuxmint/nemo)
+- [Dolphin](https://invent.kde.org/system/dolphin)
 
 ## Application Launcher
 
-https://codeberg.org/dnkl/fuzzel
-
-https://github.com/philj56/tofi
+- [Fuzzel](https://codeberg.org/dnkl/fuzzel)
+- [Tofi](https://github.com/philj56/tofi)
 
 ## Layouts
 
@@ -66,15 +80,11 @@ persway - enforces spiral and main-stack layouts
 swaymonad - an auto-tiler that implements Xmonad-like layouts.
 papersway - PaperWM-style scrollable window management for sway/i3wm.
 
-## Wallpapers
+## Notification Center
 
-https://github.com/anufrievroman/waypaper
+- https://github.com/ErikReider/SwayNotificationCenter
 
-## Notifications
-
-https://github.com/ErikReider/SwayNotificationCenter
-
-https://github.com/emersion/mako
+- https://github.com/emersion/mako
 
 ## Terminal Emulators
 
@@ -84,6 +94,11 @@ https://github.com/emersion/mako
 
 - Kitty - A cross-platform, fast, feature-full, GPU-based terminal emulator
 
-# Hotkey Daemon
+- https://ghostty.org/
+ 
+- https://st.suckless.org/
+ 
+ https://tabby.sh/
+ 
 
-https://github.com/waycrate/swhkd/
+

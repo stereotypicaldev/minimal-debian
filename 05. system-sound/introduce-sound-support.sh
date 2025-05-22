@@ -30,15 +30,3 @@ systemctl --user enable --now pipewire-pulse
 echo "Checking PipeWire status..."
 systemctl --user status pipewire pipewire-pulse
 
-# Install additional dependencies for greetd and Sway, if needed
-echo "Ensuring greetd and sway dependencies are installed..."
-sudo apt install -y greetd sway
-
-# You can configure greetd by editing its config file:
-# It's typically located at /etc/greetd/config.toml.
-# Ensure that `sway` is set as the session command.
-
-# Example configuration line in greetd:
-# session = "sway"
-
-echo "The script has finished. Please configure greetd to launch sway with DBus support."
