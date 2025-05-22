@@ -20,12 +20,14 @@ Welcome to a minimalist Debian 12 setup — a streamlined, non-graphical (partly
 - [ ] Configure Waybar
     - [ ] Network
 
-## System
+## System Components
 
-- Sound Support (PipeWire) + Minimal GUI (Pavucontrol)
-- Minimal Clipboard Manager (wl-clipboard)
-- File Manager
-- Application Launcher
+- [x] Sound Support (PipeWire) + Minimal GUI (Pavucontrol)
+- [x] Clipboard Capabillity (wl-clipboard)
+- [x] File Manager
+- [x] Status Bar
+- [x] Application Launcher -
+
 
 ```xdg-portal-gtk xdg-user-dirs```
 
