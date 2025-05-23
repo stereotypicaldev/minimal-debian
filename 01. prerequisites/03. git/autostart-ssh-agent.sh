@@ -1,3 +1,9 @@
+Fix :
+
+-  eval "$(ssh-agent -s)"
+-  ssh-add ~/.ssh/id-ed25519_github
+
+
 Option 2 (Bonus): Use systemd user service (advanced)
 
 This option runs ssh-agent as a background user service independent of your shell.
