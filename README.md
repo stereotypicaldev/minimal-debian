@@ -10,321 +10,52 @@ This is an opinionated, personal project, for my own use. Please don't attempt t
 
 I am a freaking grandpa...jokes aside, I just want things to work...and grandaddy know how to dooooo :P 
 
-## Without Further Audie
+## Read before executing
+
+What are distros, but some choices already decided for you; same thing here, you run those scripts, this is what you will end up with...
 
 - Bootloader - `grub`
-- Display Manger - `greetd`
-- 
+ 
+- Display Manager - [greetd](https://wiki.archlinux.org/title/Greetd) a minimal and flexible login manager daemon; operates without the need for a graphical environment, aligning with my requirements for a non-graphical login manager.
 
-## TO-DO
+- Window Manager - [Sway](https://swaywm.org/) is a dynamic tiling window manager and Wayland compositor that offers a fast, keyboard-driven workflow; with a focus on simplicity, Sway is lightweight and resource-efficient.
 
-- [ ] Create a Script
-- [ ] "Debloat" System Packages
-- [ ] First Steps on new Operating System
-- [ ] Optimize System Performance
-- [ ] Optimize Network Performance
-- [ ] Prerequisities (System Initiation)
-    - Wayland Support
-    - Sound Support
-    - Sway, Waybar, etc. etc. 
-- [ ] Sway Config
-- [ ] Tofi/Ruffel Config
-- [ ] Configure Waybar
-    - [ ] Network
+- Status Bar - [Waybar](), a highly customizable Wayland bar for Sway and Wlroots based compositors.
 
-- First Boot
-- System Performance Optimization
-- Drivers
-- Application Performance
-- System Security
+- Notifications Deamon - [](),
 
-## First Boot (initial boot)
+- Terminal Emulator - [](), 
 
-1. Fix Apt Sources
+- Terminal Multiplexer - [](),
 
-   - Comment out the cdrom line on /etc/apt/sources.list
-   - Run sudo apt update && sudo apt full-upgrade && sudo apt dist-upgrade
+- Application Launcher - [](),
 
-2. Add Additional Repositories
+- File Manager - []()[^1]
 
-   - sudo add-apt-repository non-free
-   - sudo add-apt-repisitory contrib
-   - sudo apt update && sudo apt upgrade -y
+- Clipboard Manager (wl-clipboard)
 
-3. Unattended Upgrades
+- Network Manager? https://en.wikipedia.org/wiki/Wicd
 
-  - sudo apt install unattended-upgrades
-  - sudo dpkg-reconfigure --priority=low unattended-upgrades
+- [x] Sound Support (PipeWire)
 
-4. Create a non-root user account
+Minimal GUI (Pavucontrol)??
 
-## Second Boot
+  - [PulseAudio-clt](https://github.com/graysky2/pulseaudio-ctl)
 
-1. Debloat System (Reduce Footprint)
+  - [PulseMixer](https://github.com/GeorgeFilipkin/pulsemixer)
 
-  - remove pre-installed applications
-  - remove uncessary tools (since I am going to install my own preferences)
+  - [Pa Volume Control](https://github.com/geigerzaehler/pa-volume-control)
 
-2. Speed up boot-time 
+  - [Volumectl](https://github.com/kovetskiy/volumectl)
 
-  - Minimizing GRUB boot-options Timeout
-
-    - sudo micro /etc/default/grub
-    - GRUB_TIMEOUT=0
-    - sudo update-grub
-
-3. Startup Applications & Services Optimizations
-
-    - systemctl list-unit-files   
-    
-    - systemd-analyze
-
-    - systemctl disable [].service
-
-4. Disable Mitigations
-
-    Software - grub customizer
-
-    - micro /etc/default/grub
-    - GRUB_CMDLINE_LINUX="quiet mitigations=off"
-
-5. ZSwap
-
-    - micro /etc/default/grub
-    - GRUB_CMDLINE_LINUX="zswap.enabled=1 quiet"
-
-6. Disable Splash + Readahead Profiling
-
-    - micro /etc/default/grub
-    - remove quiet splash and replace with profile
-    - sudo update-grub
-
-3. Nvidia Drivers? - caused problems in the past
-  
-  - sudo apt install nvidia-detect
-  - nvidia-detect
-  - sudo apt install nvidia-driver
-  - sudo reboot
-
-
-
-## Third Boot
-
-
-
-
-
-
-
-
-
-2. Set up Package Manager (Nala)
-  
-  - sudo apt install nala
-
-
-
-
-2. autocpufreq 
-
-3. Power Management?
-
-## Application Performance
-
-1. Preload - keeps frequent apps in memory so they load faster
-
-  - sudo apt install preload
-  - sudo systemctl enable --now preload
-
-
-
-
-
-1. Encrypt Home Folder - https://jumpcloud.com/blog/how-to-encrypt-ubuntu-20-04-desktop-post-installation
-   or Veracrypt
-
-
-7. 
-  - https://wiki.debian.org/ReduceDebian
-  - https://github.com/jazir555/Linux-Performance-Optimizations/blob/main/performance%20optimizations.txt
-  - https://gist.github.com/dante-robinson/cd620c7283a6cc1fcdd97b2d139b72fa
-  - https://github.com/sahilshekhawat/Optimizing-Linux-Performance-A-Hands-On-Guide-to-Linux-Performance-Tools
-  - https://github.com/hawshemi/linux-optimizer
-  - https://github.com/jazir555/Linux-Performance-Optimizations
-  - zswap - https://github.com/M-Gonzalo/zramd
-  - Update to systemd 254 or higher
-  - https://blog.frehi.be/2011/05/27/linux-performance-improvements/
-  - https://www.siberoloji.com/how-to-optimize-disk-io-performance-in-debian-12-bookworm/
-  - https://shape.host/resources/optimizing-network-performance-enabling-bbr-on-debian-12-step-by-step
-  - https://infotechys.com/tips-for-optimizing-your-ubuntu-debian/
-  - https://medium.com/@charles.vissol/optimize-your-linux-69c70320d852
-  - https://www.siberoloji.com/how-to-configure-system-services-for-high-performance-on-debian-12/
-  - https://github.com/sn99/Optimizing-linux
-  - https://www.fosslinux.com/111937/tips-and-tricks-for-optimizing-linux-device-performance.htm
-  - https://qref.sourceforge.net/Debian/reference/ch-tune.en.html
-  - https://www.turbogeek.co.uk/optimize-linux/
-  - https://www.debian.org/doc/manuals/debian-reference/ch09
-  - https://mihirpopat.medium.com/top-tips-to-optimize-your-linux-system-make-your-machine-faster-and-more-efficient-4301afa349a5
-  - 
-  
-6. Startup Applications & Services
-
-  - ~/.config/autostart - folder which most startup applications is installed
-  -  Stacer Application
-
-6. Linux Headers
-
-  - sudo nala install linux-headers-$(uname -r)
-  - firmware-linux
-  - firmware-linux-nonfree
-  - vulk
-  - an-tools
-  - vulkan-validationlayers
-  - unrar
-  - gstreamer1.0-vaapi
-  - clang
-  - bpytop
-  - cargo
-  - libc6-i386
-  - libc6-x32
-  - libu2f-udev
-  - samba-common-bin
-  - exfat-fuse
-
-## System Security
-
-> Security is a journey, not a destination.
-
-1. Setting up a Firewall
-
-  - ufw
-  - firewalld
-  - iptables 
-  - nfttables
-
-  Recommended Rules 
-
-  ```
-  sudo ufw limit 22/tcp
-  sudo ufw allow 80/tcp
-  sudo ufw allow 443/tcp
-  sudo ufw default deny incoming
-  sudo ufw default allow outgoing
-  sudo ufw enable
-  ```
-
-2. Disable SSH Root Access
-
-3. Change SSH Default Port
-
-4. Disabling SSH Password Authentication
-
-5. Set up another firewall on top of that?
-
-  - PortMaster?
-  - OpenSnitch?
-
-6. Fail2Ban (intrusion prevention utility)
-
-  ```
-  sudo apt install fail2ban
-  ```
-
-7. Protect System Against Rootkits
-
-  - https://linuxhint.com/install_chkrootkit/
-
-
-7. Prioritizing Repositories
-
-8. Sandboxing
-
-  - FlatSeal
-  - Firejail/Firetools?
-
-6. Application-Level Security
-
-  - AppArmor
-  - SELinux
-
-
-
-
-
-
-3. Antivirus
-
-  - ClamAV/ClamTK - 
-
-
-
-
-## System Privacy 
-
-  - Bleachbit
-  - https://www.bleachbit.org/
-  - https://rmlint.readthedocs.io/en/latest/
-  - https://www.nongnu.org/synaptic/
-
-
-
-
-## Miscelleanious (Personal)
-
-1. Install Microsoft Fonts
-
-  - sudo nanla install ttf-mscore-fonts-installer
-
-2. Multimedia codecs? - ``sudo apt install libavcodex-extra```
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+- [Flatpak]()
 
 ## System Components
 
-- [x] Sound Support (PipeWire) + Minimal GUI (Pavucontrol)
-- [x] Clipboard Capabillity (wl-clipboard)
-- [x] File Manager - 
-- [x] Status Bar - 
-- [x] Application Launcher -
+- [ ] Package Manager Frontend - Synaptic?
+- [ ] Backup Tool/File Syncing?
 
-```xdg-portal-gtk xdg-user-dirs```
-
-## Getting Started
-
-This repository provides detailed instructions and scripts to set up your own minimal Debian 12 system following these principles.
-
-- [greetd](https://wiki.archlinux.org/title/Greetd) a minimal and flexible login manager daemon; operates without the need for a graphical environment, aligning with my requirements for a non-graphical login manager.
-
-- [Sway](https://swaywm.org/) is a dynamic tiling window manager and Wayland compositor that offers a fast, keyboard-driven workflow; with a focus on simplicity, Sway is lightweight and resource-efficient.
-
-- [Waybar](), a highly customizable Wayland bar for Sway and Wlroots based compositors.
-
-- [Flatpak]() + [Ungoogled Chromium]()
-
-## Applications
-
-- Application Launcher
-- Compositor + Window Manager
-- Notifications Deamon
-- Terminal Emulator
-  - Shell
-- File Manager
-- Firewall
-- Flatpak + Browser
+fsearch - search tool
 
 ## Firewall
 
@@ -334,17 +65,16 @@ This repository provides detailed instructions and scripts to set up your own mi
 ## AntiVirus
 
 - [ClamAV](https://www.clamav.net/)
+- [ClamTK]()
 
 ## File Manager (GUI)
 
-- [Thunar]()
-- [Nemo](https://github.com/linuxmint/nemo)
-- [Dolphin](https://invent.kde.org/system/dolphin)
 
 ## Application Launcher
 
 - [Fuzzel](https://codeberg.org/dnkl/fuzzel)
 - [Tofi](https://github.com/philj56/tofi)
+- [uLauncher]()
 
 ## Layouts
 
@@ -373,22 +103,341 @@ papersway - PaperWM-style scrollable window management for sway/i3wm.
  
  https://tabby.sh/
  
+## Getting Started - How to use this?
+
+Execute the scripts, per folder and per boot
+
+- Initial Boot Sequence (1st Boot)
+- 2nd Boot - Debloat, System Optimization
+  - Debloat System (Reduce Attack Surface & Footprint)
+  - Speed up boot-time 
+- 3rd Boot - System Security & Hardening
+- 4th Boot - Setting up the "Desktop" Enviroment
+- 5th Boot - Setting up Personal Workspace
+
+Software - grub customizer
+
+## First Boot (initial boot)
+
+1. Fix Apt Sources
+
+   - Comment out the cdrom line on /etc/apt/sources.list
+   - sudo apt update && sudo apt full-upgrade && sudo apt dist-upgrade
+
+2. Add Additional Repositories
+
+   - sudo add-apt-repository non-free
+   - sudo add-apt-repisitory contrib
+   - sudo apt update && sudo apt upgrade -y
+
+3. Unattended Upgrades
+
+  - sudo apt install unattended-upgrades
+  - sudo dpkg-reconfigure --priority=low unattended-upgrades
+
+4. Create a non-root user account??
+
+## Second Boot (Debloat, System Optimization)
+
+1. Debloat System (Reduce Footprint)
+
+  - remove pre-installed applications
+  - remove uncessary tools (since I am going to install my own preferences)
+
+2. Speed up boot-time 
+
+  - Minimizing GRUB boot-options Timeout
+
+    - sudo micro /etc/default/grub
+    - GRUB_TIMEOUT=0
+    - sudo update-grub
+
+3. Services Optimization
+
+    - sudo systemctl list-unit-files --type=service  
+    
+    - systemd-analyze blame
+
+    - systemctl disable [].service
+
+4. Disable Mitigations
+
+    - micro /etc/default/grub
+    - GRUB_CMDLINE_LINUX="quiet mitigations=off"
+
+5. ZSwap
+
+    - micro /etc/default/grub
+    - GRUB_CMDLINE_LINUX="zswap.enabled=1 quiet"
+
+    zswap.zpool=z3fold zswap.compressor=lz4
+
+    - micro /etc/initramfs-tools/modules
+    - append z3fold
+    - sudo update-initramfs -u
+
+    To verify
+
+    - dmesg | grep zswap
+
+6. Disable Splash + Readahead Profiling
+
+    - micro /etc/default/grub
+    - remove quiet splash and replace with profile
+    - sudo update-grub
+
+7. Optimize CPU Performance
+
+    - sudo apt install cpufrequtils
+    - sudo cpufreq-set -g performance
+
+    This sets the CPU governor to 'performance' mode, maximizing CPU speed
+    
+    - autocpufreq 
+
+8. Optimize Swap Usage
+
+    - micro /etc/sysctl.conf
+
+    - vm.swappiness = 10
+
+    - sudo sysctl -p
+
+9. Tune Disk I/O Performance
+
+  - sudo blockdev --setra 65536 /dev/sdX
+
+10. Power Management?
+
+11. Preload - keeps frequent apps in memory so they load faster
+
+  - sudo apt install preload
+  - sudo systemctl enable --now preload
+  
+## Third Boot (System Security, Hardening)
+
+> Security is a journey, not a destination.
+
+1. Setting up a Firewall
+
+  - ufw
+  - firewalld
+  - iptables 
+  - nfttables
+
+  Recommended Rules 
+
+  ```
+  sudo ufw limit 22/tcp
+  sudo ufw allow 80/tcp
+  sudo ufw allow 443/tcp
+  sudo ufw default deny incoming
+  sudo ufw default allow outgoing
+  sudo ufw enable
+  ```
+
+2. Disable SSH Root Access
+
+    - micro /etc/ssh/sshd_config
+    - PermitRootLogin no
+
+3. Change SSH Default Port
+
+4. Disabling SSH Password Authentication
+
+5. Set up another firewall on top of that?
+
+  - PortMaster?
+  - OpenSnitch?
+
+6. Implement Intrusion Prevention with Fail2Ban
+
+  - sudo apt install fail2ban
+  - sudo systemctl enable fail2ban
+  
+7. Protect System Against Rootkits
+
+  - https://linuxhint.com/install_chkrootkit/
+
+8. Configure sysctl: Edit /etc/sysctl.conf to harden network settings.
+
+  - net.ipv4.icmp_echo_ignore_broadcasts = 1
+  - net.ipv4.conf.all.rp_filter = 1
+  - net.ipv4.tcp_syncookies = 1
+
+7. Prioritizing Repositories
+
+8. Sandboxing
+
+  - [Flatseal](https://github.com/tchx84/flatseal)
+
+  - Firejail/Firetools?
+
+6. Application-Level Security
+
+
+  6.1. Implement Mandatory Access Controls (MAC)
+
+    - sudo apt install apparmor apparmor-profiles apparmor-utils
+    - sudo systemctl enable apparmor
+    - sudo systemctl start apparmor
+
+  - SELinux
+
+7. Automated Security Auditing with Harbian Audit
+
+    ```
+    sudo apt install -y bc net-tools pciutils network-manager
+    git clone https://github.com/hardenedlinux/harbian-audit.git
+    cd harbian-audit
+    sudo cp etc/default.cfg /etc/default/cis-hardening
+    sudo sed -i "s#CIS_ROOT_DIR=.*#CIS_ROOT_DIR='$(pwd)'#" /etc/default/cis-hardening
+    sudo bin/hardening.sh --init
+    sudo bin/hardening.sh --set-hardening-level 3
+    sudo bin/hardening.sh --apply
+    ```
+
+9. Implement Kernel Hardening Techniques
+
+    Enhance kernel security by enabling features like Address Space Layout Randomization (ASLR) and restricting core dumps.
+
+    - micro /etc/sysctl.conf
+    
+    - kernel.randomize_va_space = 2
+    - fs.suid_dumpable = 0
+
+    - sudo sysctl -p
+
+10. Automated Security Hardening
+
+    Utilize tools like Bastille and harden to automate the hardening process:
+
+    - sudo apt install bastille harden
+
+11. Encrypt Home Folder - https://jumpcloud.com/blog/how-to-encrypt-ubuntu-20-04-desktop-post-installation
+   or Veracrypt
+   
+Steps to Encrypt Your Home Directory with eCryptfs
+
+  - sudo apt install ecryptfs-utils
+  - sudo ecryptfs-migrate-home -u your_username
+  Retrieve and securely store the randomly generated mount passphrase
+  - ecryptfs-unwrap-passphrase
+  - mount | grep ecryptfs
+
+12. Swap Encryption: If your system uses swap space, ensure it's encrypted to prevent sensitive data from being written in plaintext.
+
+13. Temporary Directories: Consider mounting /tmp and /var/tmp as tmpfs to keep temporary files in RAM, reducing the risk of sensitive data being written to disk.
+
+## 4th Boot - Setting up the "Desktop" Enviroment
+
+1. Set up Package Manager (Nala)
+  
+  - sudo apt install nala
+
+6. Startup Applications & Services
+
+  - ~/.config/autostart - folder which most startup applications is installed
+  -  Stacer Application
+
+6. Linux Headers
+
+  - sudo nala install linux-headers-$(uname -r)
+  - firmware-linux
+  - firmware-linux-nonfree
+  - vulk
+  - an-tools
+  - vulkan-validationlayers
+  - unrar
+  - gstreamer1.0-vaapi
+  - clang
+  - bpytop
+  - cargo
+  - libc6-i386
+  - libc6-x32
+  - libu2f-udev
+  - samba-common-bin
+  - exfat-fuse
+
+
+## Fifth Boot (Setting up Personal Workspace)
+
+  - [Bleachbit](https://www.bleachbit.org/)
+
+  - https://rmlint.readthedocs.io/en/latest/
+  
+  - https://www.nongnu.org/synaptic/
+
+1. Install Microsoft Fonts
+
+  - sudo nala install ttf-mscore-fonts-installer
+
+2. Multimedia codecs? - ``sudo apt install libavcodex-extra```
+
+
+```xdg-portal-gtk xdg-user-dirs```
+
+## Footnotes
+
+[^1]: My setup only supports a terminal-based file manager, if you want to go GUI, I recommend [Thunar](https://docs.xfce.org/xfce/thunar/start).
+
 ## Sources
 
-- [Choosing the Right Linux DIstro](https://christitus.com/choose-linux-distro/)
+- [x] [Choosing the Right Linux Distro](https://christitus.com/choose-linux-distro/)
 
-- [The Biggest Linux Security Mistakes by ChrisTitus](https://christitus.com/linux-security-mistakes/)
-
-- [LinuxHint's - Security Hardening Checklist](https://linuxhint.com/linux_security_hardening_checklist/)
-
-https://static.open-scap.org/ssg-guides/ssg-fedora-guide-index.html
-
-https://jfearn.fedorapeople.org/fdocs/en-US/Fedora/20/html-single/Security_Guide/index.html
-
-https://www.cyberciti.biz/tips/linux-security.html
-
-https://github.com/shaurya-007/NSA-Linux-Hardening-docs
+- [x] [The Biggest Linux Security Mistakes by ChrisTitus](https://christitus.com/linux-security-mistakes/)
 
 - [Speed-up Linux](https://christitus.com/speedup-linux/)
 
+- [LinuxHint's - Security Hardening Checklist](https://linuxhint.com/linux_security_hardening_checklist/)
+
+- https://static.open-scap.org/ssg-guides/ssg-fedora-guide-index.html
+
+- https://jfearn.fedorapeople.org/fdocs/en-US/Fedora/20/html-single/Security_Guide/index.html
+
+- https://www.cyberciti.biz/tips/linux-security.html
+
+- https://github.com/shaurya-007/NSA-Linux-Hardening-docs
+
 - [](https://www.youtube.com/watch?v=h1jOrlToaY0)
+
+- https://wiki.debian.org/ReduceDebian
+
+- https://github.com/jazir555/Linux-Performance-Optimizations/blob/main/performance%20optimizations.txt
+
+- https://gist.github.com/dante-robinson/cd620c7283a6cc1fcdd97b2d139b72fa
+
+- https://github.com/sahilshekhawat/Optimizing-Linux-Performance-A-Hands-On-Guide-to-Linux-Performance-Tools
+
+- https://github.com/hawshemi/linux-optimizer
+
+- https://github.com/jazir555/Linux-Performance-Optimizations
+
+- zswap - https://github.com/M-Gonzalo/zramd
+
+- Update to systemd 254 or higher
+
+- https://blog.frehi.be/2011/05/27/linux-performance-improvements/
+
+- https://www.siberoloji.com/how-to-optimize-disk-io-performance-in-debian-12-bookworm/
+
+- https://shape.host/resources/optimizing-network-performance-enabling-bbr-on-debian-12-step-by-step
+
+- https://infotechys.com/tips-for-optimizing-your-ubuntu-debian/
+
+- https://medium.com/@charles.vissol/optimize-your-linux-69c70320d852
+
+- https://www.siberoloji.com/how-to-configure-system-services-for-high-performance-on-debian-12/
+
+- https://github.com/sn99/Optimizing-linux
+
+- https://www.fosslinux.com/111937/tips-and-tricks-for-optimizing-linux-device-performance.htm
+
+- https://qref.sourceforge.net/Debian/reference/ch-tune.en.html
+
+- https://www.turbogeek.co.uk/optimize-linux/
+
+- https://www.debian.org/doc/manuals/debian-reference/ch09
+
+- https://mihirpopat.medium.com/top-tips-to-optimize-your-linux-system-make-your-machine-faster-and-more-efficient-4301afa349a5
+  
